@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Webcam from 'react-webcam'
-import { connect } from 'react-redux'
-import { render } from '@testing-library/react'
+// import { connect } from 'react-redux'
 
 class CaptureImage extends Component {
     state = {
@@ -17,6 +16,7 @@ class CaptureImage extends Component {
     capture = () => {
         const imageSrc = this.webcam.getScreenshot()
         console.log(imageSrc);
+        
         this.setState({
             imageData: imageSrc
         })
@@ -49,7 +49,7 @@ class CaptureImage extends Component {
         })
     }
 
-    handelSubmit = e => {
+    handleSubmit = e => {
         e.preventDefault()
 
         let imageObject = {
@@ -64,14 +64,14 @@ class CaptureImage extends Component {
     saveForm = () => {
         return (
             <div>
-                <form onSubmit={handelSubmit}>
+                <form onSubmit={this.handelSubmit}>
                     <p>
                         <label for="">Image Name :</label>
                         <input
                             type="text"
                             name="image_name"
                             value={this.state.image_name}
-                            onChange={handleChange}    
+                            onChange={this.handleChange}    
                         />
     
                         <input type="submit" value="Save" />
